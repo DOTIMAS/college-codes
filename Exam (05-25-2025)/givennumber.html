@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Square of a Number</title>
+</head>
+<body>
+  <h2>Square of a Given Number</h2>
+  <p id="result"></p>
+
+  <script>
+    function square(num) {
+      return num * num;
+    }
+
+    // Ask the user to enter a number
+    var input = prompt("Enter a number to find its square:");
+    var number = parseFloat(input);
+
+    if (!isNaN(number)) {
+      var result = square(number);
+      document.getElementById("result").innerText = 
+        "The square of " + number + " is: " + result;
+      console.log("The square of " + number + " is: " + result);
+    } else {
+      document.getElementById("result").innerText = "Invalid input. Please enter a number.";
+      console.log("Invalid input.");
+    }
+  </script>
+</body>
+</html>

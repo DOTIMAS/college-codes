@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversion of Temperature</title>
+  <style>
+    :root {
+      --light-red: #fdecea;
+      --medium-red: #f28b82;
+      --dark-red: #c62828;
+      --input-bg: #fff5f5;
+      --text-color: #b71c1c;
+      --border-color: #ef9a9a;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: var(--light-red);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .converter {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      background-color: white;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(198, 40, 40, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--dark-red);
+    }
+
+    label, select, input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background-color: var(--input-bg);
+      color: var(--text-color);
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: var(--medium-red);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--dark-red);
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <h2>Conversion of Temperature</h2>
+    <label for="temperature">Enter Temperature:</label>
+    <input type="number" id="temperature" placeholder="e.g., 100">
+
+    <label for="conversionType">Conversion Type:</label>
+    <select id="conversionType">
+      <option value="CtoF">Celsius to Fahrenheit</option>
+      <option value="FtoC">Fahrenheit to Celsius</option>
+    </select>
+
+    <button onclick="convertTemperature()">Convert</button>
+
+    <label for="result">Result:</label>
+    <input type="text" id="result" readonly>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      const temp = parseFloat(document.getElementById("temperature").value);
+      const conversionType = document.getElementById("conversionType").value;
+      let result;
+
+      if (isNaN(temp)) {
+        result = "Please enter a valid number";
+      } else {
+        if (conversionType === "CtoF") {
+          result = ((temp * 9/5) + 32).toFixed(2) + " °F";
+        } else {
+          result = ((temp - 32) * 5/9).toFixed(2) + " °C";
+        }
+      }
+
+      document.getElementById("result").value = result;
+    }
+  </script>
+</body>
+</html>
